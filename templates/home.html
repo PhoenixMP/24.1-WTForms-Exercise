@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Find Your Next Furbaby!</h1>
+
+{% for msg in get_flashed_messages() %}
+<div>{{ msg }}</div>
+{% endfor %}
+
+<a href="/pets/add"><button>Add a Pet!</button> </a>
+<p>
+
+<div style="display:inline-block">
+
+    {% for pet in available_pets %}
+    <div style="margin:80px">
+        <a style="color:black; font-size: 40px; text-decoration: none;" href="/pets/{{ pet.id }}">{{pet.name}} </a>
+
+        <p><b>Available!</b></p>
+        <p> <img src={{pet.photo_url}} width="304" height="236">
+        </p>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+<div style="display:inline-block">
+
+    {% for pet in unavailable_pets %}
+    <div style="margin:50px">
+        <a style="color:black; font-size: 40px; text-decoration: none;" href="/pets/{{ pet.id }}">{{pet.name}} </a>
+        <p> <img src={{pet.photo_url}} width="304" height="236">
+        </p>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+
+</p>
+
+{% endblock %}
